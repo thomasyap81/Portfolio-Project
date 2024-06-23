@@ -200,7 +200,7 @@ ORDER BY 2,3
 
 ```
 
-### 9. Create Temp Table
+### 10. Create Temp Table
 
 ```sql
 DROP TABLE IF exists #PercentPopulationVaccinated
@@ -233,7 +233,7 @@ FROM #PercentPopulationVaccinated
 ORDER BY location, date
 ```
 
-### 10. Create View to store data for later visualizations
+### 11. Create View to store data for later visualizations
 
 ```sql
 CREATE VIEW PercentPopulationVaccinated AS
