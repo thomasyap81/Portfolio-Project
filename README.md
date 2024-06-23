@@ -234,3 +234,20 @@ ORDER BY location, date
 ```
 
 ### 10. Create View to store data for later visualizations
+
+```sql
+CREATE VIEW PercentPopulationVaccinated AS
+	SELECT dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations,
+		SUM(CAST(vac.new_vaccinations AS FLOAT)) 
+		OVER (PARTITION BY dea.location ORDER BY dea.location, dea.date) AS RollingPeopleVaccinated 
+	FROM ProfolioProject.dbo.CovidDeaths dea
+	Join ProfolioProject.dbo.CovidVaccinations vac
+		On dea.location = vac.location
+		and dea.date = vac.date
+	WHERE dea.continent is not null
+```
+
+```sql
+SELECT * 
+FROM PercentPopulationVaccinated
+```
